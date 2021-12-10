@@ -209,6 +209,7 @@ public class Metrics {
      *
      * @return True if statistics measuring is running, otherwise false.
      */
+    @SuppressWarnings("deprecation")
     public boolean start() {
         synchronized (optOutLock) {
             // Did we opt out?
@@ -226,6 +227,7 @@ public class Metrics {
 
                 private boolean firstPost = true;
 
+                @Override
                 public void run() {
                     try {
                         // This has to be synchronized or it can collide with the disable method.
@@ -331,7 +333,7 @@ public class Metrics {
         data.append(encode("guid")).append('=').append(encode(guid));
         encodeDataPair(data, "version", description.getVersion());
         encodeDataPair(data, "server", Bukkit.getVersion());
-        encodeDataPair(data, "players", Integer.toString(Bukkit.getServer().getOnlinePlayers().length));
+        encodeDataPair(data, "players", Integer.toString(Bukkit.getServer().getOnlinePlayers().size()));
         encodeDataPair(data, "revision", String.valueOf(REVISION));
 
         // If we're pinging, append it

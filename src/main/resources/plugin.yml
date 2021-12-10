@@ -1,0 +1,14 @@
+name: HelperBot
+version: 1.18-2.3
+main: me.Delocaz.HelperBot.HelperBot
+author: Delocaz
+authors: [SweetieBelle]
+api-version: 1.18
+commands:
+    help:
+        usage: /<command> <page>
+        aliases: [helpme, plzhelp, icanhazhelp, halp]
+    addhelp:
+        usage: /<command> <page> <content>
+    delhelp:
+        usage: /<command> <page>

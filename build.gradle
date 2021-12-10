@@ -1,0 +1,21 @@
+plugins {
+     id 'java'
+     id 'eclipse'
+}
+
+group = 'me.Delocaz'
+version = '1.18-2.3'
+
+repositories {
+     jcenter()
+     maven {
+          name 'spigot'
+          url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+     }
+}
+
+
+dependencies {
+     implementation 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+     implementation fileTree(dir: 'libs', include: '*.jar')
+}

@@ -1,13 +1,15 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
      id 'java'
      id 'eclipse'
 }
 
 group = 'me.Delocaz'
-version = '1.18-2.3'
+version = '1.19-2.3'
 
 repositories {
-     jcenter()
+     mavenCentral()
      maven {
           name 'spigot'
           url 'https://hub.spigotmc.org/nexus/content/groups/public/'
@@ -16,6 +18,13 @@ repositories {
 
 
 dependencies {
-     implementation 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
-     implementation fileTree(dir: 'libs', include: '*.jar')
+     implementation 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
+     // implementation fileTree(dir: 'libs', include: '*.jar')
+}
+
+processResources {
+	from (sourceSets.main.resources.srcDirs) {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+		filter(ReplaceTokens, tokens: ['VERSION' : project.version])
+	}
 }
